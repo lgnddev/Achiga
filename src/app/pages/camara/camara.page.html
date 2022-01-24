@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>camara</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-button (click)="takePicture()">Take picture</ion-button>
+    <ion-button (click)="savedGal()">Guardar en Galería</ion-button>
+    <img *ngIf="image" [src]="image" alt="image" style="width: 100%;max-width: 250px;">
+  </div>
+</ion-content>
+

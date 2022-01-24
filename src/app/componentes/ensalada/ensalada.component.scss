@@ -1,0 +1,37 @@
+ion-content{
+    --background:rgb(167, 156, 124);
+    --ion-font-family: Satisfy !important;
+}
+
+@font-face{
+    font-family: 'Satisfy';
+    src:url('/src/assets/fonts/Satisfy-Regular.ttf');
+}
+
+.star{
+    color:rgb(199, 151, 62);
+}
+
+.boton{
+    --background: rgb(195, 144, 50);
+}
+
+ion-card{
+    --background: rgb(22, 22, 22);
+}
+
+.letra{
+    color: rgb(255, 255, 255);
+}
+
+.titulo{
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.desc{
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+
+}

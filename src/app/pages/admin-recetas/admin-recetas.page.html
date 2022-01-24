@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo">Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="subti">Recetas</h2>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let r of recetas" class="fondo1">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Id: {{r.id_receta}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Titulo: {{r.nom_receta}}  <br>
+        Descripcion: {{r.descripcion}} <br>
+        Dificultad: {{r.id_difi}} <br>
+        tiempo: {{r.tiempo}} <br>
+        ingredientes: {{r.ingredientes}} <br>
+        Preparacion: {{r.preparacion}} <br>
+        Tipo de Receta: {{r.id_tipo}} <br>
+        Cocinero: {{r.id_usu}} </p>
+        <ion-button (click)="eliminarR(r.id_receta)">Eliminar</ion-button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ion-content>

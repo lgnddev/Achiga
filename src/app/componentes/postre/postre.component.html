@@ -1,0 +1,41 @@
+<ion-content>
+  <div *ngFor="let items of listaRecetasBD">
+    <ion-card *ngIf="items.id_tipo == 4">
+      <ion-card-header>
+        <ion-row>
+          <ion-col size="3">
+
+            <div>
+              <ion-avatar slot="start">
+                <img [src]="items.imagen">
+              </ion-avatar>
+            </div>
+          </ion-col>
+
+          <ion-col size="7">
+            <h2 class="letra" style="margin-top: 10px;">
+              {{items.nombre}}
+            </h2>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-card-title class="titulo">{{items.nom_receta}}
+        </ion-card-title>
+        <img src="../../assets/icon/queque.jpg">
+        <p class="desc">
+          {{items.descripcion}}
+        </p>
+
+        <ion-button style="margin-left: 33%;" class="boton" (click)="visualizar(items.id_receta)">
+          <ion-icon (click)="visualizar(items.id_receta)" name="arrow-forward-outline"></ion-icon>
+          Ver Mas...
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

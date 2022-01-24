@@ -1,0 +1,34 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar style="--background: rgb(27, 27, 27);">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #title class="fondo1">
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-text-center ion-margin-vertical" style="margin: 32px 0">¿Olvidaste tu contraseña? </h3>
+        <p class="ion-text-center"> A continuacion podras cambiar la contraseña de tu cuenta ingresando el correo
+          electronico asociado a esta.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-item>
+            <ion-icon name="mail-open-outline" class="ion-padding-end"></ion-icon>
+            <ion-input placeholder="Correo Electronico"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="presentAlert()" expand="full" shape="round" class="ion-margin-vertical boton"
+            >Enviar Email</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

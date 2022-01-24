@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo">Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="subti">Usuarios</h2>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let d of usuarios" class="fondo1">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Id: {{d.id_usu}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        Nombre: {{d.nombre}} <br>
+        Apellidos:{{d.apellidos}} <br>
+        Fecha de Nacimiento: {{d.f_nacimiento }}  <br>
+        Email: {{d.email}} <br>
+        Tipo de Usuario: {{d.id_tipo_usu}}</p>
+
+        <ion-button (click)="eliminar(d.id_usu)">Eliminar</ion-button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ion-content>

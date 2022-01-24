@@ -1,0 +1,168 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modificar Receta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <mat-stepper [linear]="isLinear" #stepper (selectionChange)="selectionChange($event)" class="fondo1">
+
+    <mat-step [stepControl]="secondFormGroup" label="">
+      <form [formGroup]="secondFormGroup">
+
+        <center>
+          <h2>Presentación</h2>
+        </center>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-input placeholder="{{receta.nom_receta}}" [(ngModel)]="receta.nom_receta" [ngModelOptions]="{standalone: true}" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea placeholder="{{receta.descripcion}}" [(ngModel)]="receta.descripcion" [ngModelOptions]="{standalone: true}" rows=7 ></ion-textarea>
+        </ion-item>
+
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="">
+
+      <center>
+        <h2>Ingredientes</h2>
+      </center>
+      <ion-row class="ion-margin-bottom">
+        <ion-col size="6">
+          <ion-item>
+            <ion-input [(ngModel)]="ingrediente" placeholder="ingrediente"></ion-input>
+          </ion-item>
+        </ion-col >
+        <ion-col size="4">
+          <ion-item>
+            <ion-input [(ngModel)]="cantidad" placeholder="cantidad"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button class="mas" (click)="agregar()">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+          
+            
+          
+        </ion-col>
+      </ion-row >
+
+      <hr />
+
+      <form [formGroup]="secondFormGroup">
+
+        <table style="border-collapse:separate; border-spacing:0px 20px;">
+          <thead>
+            <tr>
+              <th style="width: 20%">
+                <p style="color: rgb(0, 0, 0);"> Ingrediente </p>
+              </th>
+              <th style="width: 10%">
+                <p style="color: rgb(0, 0, 0);"> Cantidad </p>
+              </th>
+              <th style="width: 10%">
+                <p style="color: rgb(0, 0, 0);"> Acciones </p>
+              </th>
+              
+            </tr>
+          </thead>
+          <tr *ngFor="let data of rows; let i = index">
+            <th *ngFor="let y of data">
+              <p style="color: rgb(0, 0, 0);"> {{ y }} </p>
+            </th>
+            <th>
+              <ion-icon name="trash" (click)="deleteRow1(data)"></ion-icon>
+            </th>
+          </tr>
+          <tr *ngFor="let row of rows1">
+            <th *ngFor="let column of headers">
+              <p style="color: rgb(0, 0, 0);"> {{row[column]}} </p>
+            </th>
+            <th>
+              <ion-icon name="trash" (click)="deleteRow(row)"></ion-icon>
+            </th>
+          </tr>
+        </table>
+
+
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="">
+      <form [formGroup]="secondFormGroup">
+        <center>
+          <h2>Preparación</h2>
+        </center>
+
+        <ion-item>
+          <ion-textarea placeholder="{{receta.preparacion}}" [(ngModel)]="receta.preparacion" rows=15 [ngModelOptions]="{standalone: true}"></ion-textarea>
+        </ion-item>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="">
+      <form [formGroup]="secondFormGroup">
+        <center>
+          <h2>Otros</h2>
+        
+        <ion-label style="color:rgb(255, 255, 255);">
+          Tiempo de preparacion: {{valor}} Minutos
+        </ion-label>
+        <mat-slider style="width: 100%;" min="0" max="120" (input)="input($event)" value="{{receta.tiempo}}" [(ngModel)]="receta.tiempo" [ngModelOptions]="{standalone: true}"></mat-slider>
+
+        <h4>Dificultad de la receta</h4>
+
+        <mat-radio-group [(ngModel)]="dificultad" [ngModelOptions]="{standalone: true}" >
+          <ion-col size="6">
+            <mat-radio-button value="1" style="color: rgb(255, 255, 255);">Facil</mat-radio-button>
+          </ion-col>
+          <ion-col size="6">
+            <mat-radio-button value="2" style="color: rgb(255, 255, 255);">Medio</mat-radio-button>
+          </ion-col>
+          <ion-col size="6">
+            <mat-radio-button value="3" style="color: rgb(255, 255, 255);">Dificil</mat-radio-button>
+          </ion-col>
+        </mat-radio-group>
+      </center>
+
+      <ion-item style="padding-top: 30px;">
+        <ion-label>Tipo de Receta</ion-label>
+        <ion-select interface="action-sheet" value="{{receta.id_tipo}}" [(ngModel)]="receta.id_tipo" [ngModelOptions]="{standalone: true}">
+          <ion-select-option value="1">Desayuno</ion-select-option>
+          <ion-select-option value="2">Ensalada</ion-select-option>
+          <ion-select-option value="3">Almuerzo</ion-select-option>
+          <ion-select-option value="4">Postre</ion-select-option>
+        </ion-select>
+      </ion-item>
+        
+        <ion-item style="padding-top: 30px;">
+          <ion-label>Imagen</ion-label>
+          <ion-input type="file"></ion-input>
+        </ion-item>
+
+      </form>
+    </mat-step>
+
+  </mat-stepper>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" slot="bottom">
+  <ion-toolbar class="footer">
+    <center>
+      <ion-button *ngIf="startOfForm" mat-button (click)="Cancelar()">Cancelar</ion-button>
+      <ion-button *ngIf="!startOfForm" mat-button (click)="Anterior()">Anterior</ion-button>
+
+      <ion-button *ngIf="!endOfForm" mat-button (click)="Siguente()">Siguente</ion-button>
+      <ion-button *ngIf="endOfForm" mat-button (click)="confirmacion()">Finalizar</ion-button>
+
+    </center>
+  </ion-toolbar>
+</ion-footer>

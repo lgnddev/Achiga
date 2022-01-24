@@ -1,0 +1,63 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar style="--background: rgb(27, 27, 27);">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <center>
+    <div class="fondo1" style="border-radius: 15px; margin-top: 5px;">
+
+      <h1 class="ion-text-center ion-margin-vertical ion-padding-top titulo" style="margin: 16px 0; padding-top: 32px">
+        Registro</h1>
+
+      <form style="margin-top: 15px;">
+        <ion-item class="barras">
+          <ion-label position="floating">Nombre:</ion-label>
+          <ion-input [(ngModel)]="nuevoUsuario.nombre" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+
+        <ion-item class="barras">
+          <ion-label position="floating">Apellidos:</ion-label>
+          <ion-input [(ngModel)]="nuevoUsuario.apellido" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+
+        <ion-item class="barras">
+          <ion-label position="floating">Fecha de Nacimiento:</ion-label>
+          <ion-datetime displayFormat="DD / MMMM / YYYY" [(ngModel)]="nuevoUsuario.fnacimiento"
+            [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+
+        <ion-item class="barras">
+          <ion-label position="floating">Correo:</ion-label>
+          <ion-input [(ngModel)]="nuevoUsuario.email" [ngModelOptions]="{standalone: true}" type="email"
+          pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+        </ion-item>
+
+        <ion-item class="barras">
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input [(ngModel)]="nuevoUsuario.contrasena" [ngModelOptions]="{standalone: true}" type="password">
+          </ion-input>
+        </ion-item>
+        <ion-item class="barras">
+          <ion-label position="floating">Confirmar contraseña:</ion-label>
+          <ion-input [(ngModel)]="nuevoUsuario.confirmarContrasena" [ngModelOptions]="{standalone: true}"
+            type="password" (ionChange)="onChange($event)"></ion-input>
+          <p *ngIf="coincideContrasena == 2" style="color: rgb(175, 0, 0);"> Los campos no coinciden </p>
+        </ion-item>
+        <ion-item class="barras" (click)="btnImagen()">
+          <ion-col>
+            <ion-label>Foto de Perfil <p style="color: rgb(126, 126, 126);"> Opcional </p>
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <p *ngIf="imageSrc" style="color: rgb(0, 136, 7);"> Imagen Cargada </p>
+          </ion-col>
+        </ion-item>
+        <ion-button class="boton" (click)="registrar()" type="submit">Registrar</ion-button>
+      </form>
+    </div>
+  </center>
+</ion-content>

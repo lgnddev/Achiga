@@ -1,0 +1,105 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size:19px
+}
+
+.box {
+  line-height:200px;
+  font-size:20px;
+  background:
+  linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5))0 100%/100% 50px  no-repeat,
+  url(../../../assets/icon/panqueques.jpg) ;
+  color: rgba(0, 0, 0, 0);
+}
+
+.avatar {
+  background-image: url('../../../assets/icon/Jorge.png');
+  background-size: cover;
+}
+
+ion-toolbar{
+  --background:rgba(236, 192, 15, 0.816) !important;
+}
+
+ion-content{
+  --background:rgb(136, 126, 98);
+}
+
+.fondo1{
+  background-color: rgb(0, 0, 0);
+}
+
+.fondo2{
+  --background: rgb(0, 0, 0) !important;
+}
+
+.car{
+  color: rgb(0, 224, 19);
+}
+
+.descrip{
+  --background:rgb(22, 22, 22);
+  border-radius:20px; 
+  margin-top: 25px; 
+  margin-bottom:25px; 
+  width:88%; 
+  background:rgb(0, 0, 0);;
+}
+
+.p{
+  margin:0 auto; 
+  text-align: center; 
+  width:85%;
+  font-family:Satisfy;
+  font-size:17px;
+}
+
+@font-face{
+  font-family: 'Satisfy';
+  src:url('/src/assets/fonts/Satisfy-Regular.ttf');
+}
+
+.boton{
+  --background: rgb(195, 144, 50);
+
+}
+
+.comen{
+  background-color:rgb(7, 7, 7); 
+  border:rgb(136, 126, 98) 4px solid;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.pres{
+  color: rgb(252, 247, 247); 
+  font-size: 20px;
+}
+
+.fech{
+  color: rgb(252, 247, 247); 
+  font-size: 15px;
+}
+
+.eli{
+  --background: rgba(202, 9, 9, 0.507); 
+  height: 35px; 
+  padding-top: 5px;
+
+}
+
+.p2{
+  color: rgb(252, 247, 247); 
+  font-size: 18px; 
+  word-wrap: break-word; 
+  white-space: normal; 
+  text-align: justify;
+}

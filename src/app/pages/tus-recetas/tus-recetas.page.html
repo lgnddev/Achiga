@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title style="margin-left: 25%;">Tus Recetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo1">
+<div>
+  <ion-list>
+
+    <ion-item *ngFor="let i of listaRecetasBD" class="lista">
+      <ion-icon slot="end" name="ellipsis-vertical-outline" (click)="presentActionSheet(i.nom_receta, i.id_receta)"></ion-icon>
+      <ion-label (click)="visualizar(i.id_receta)">{{i.nom_receta}}</ion-label>
+    </ion-item>
+
+  </ion-list>
+</div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/nueva-receta']" class="boton">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

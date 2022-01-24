@@ -1,0 +1,49 @@
+<ion-content class="fondo">
+  <div #title class="fondo1">
+
+    <center>
+      <h1 class="ion-text-center ion-margin-vertical ion-padding-top titulo" style="margin: 32px 0; padding-top: 32px"></h1>
+      <img src="../../../assets/icon/logo.png" style="width: 75%;">
+      <ion-item class="barras">
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="usuarioIngresado.Usuario" required></ion-input>
+      </ion-item>
+
+      <ion-item class="barras">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="usuarioIngresado.Contrasena" required></ion-input>
+      </ion-item>
+      <div *ngIf="load">
+        <mat-progress-spinner [color]="color" [mode]="mode" [value]="value" [diameter]="50">
+        </mat-progress-spinner>
+      </div>
+    </center>
+
+    <ion-grid class="ion-padding-bottom" style="padding-bottom: 30px">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button expand="full" shape="round" (click)="login()" class="ion-margin-vertical boton"
+            style="margin-top: 32px ; border-radius: 128px !important">Iniciar Sesion</ion-button>
+        </ion-col>
+        <ion-col size="12" class="ion-text-center titulo">
+          <p class="titulo">Aun no te has registrado?</p>
+          <ion-row>
+            <ion-col class="titulo"><p  [routerLink]="['/inscripcion']"> Registrarse </p></ion-col>
+            <ion-col class="titulo"><p  [routerLink]="['/recuperar-contrasena']">Olvidaste tu contraseña?</p></ion-col>
+          </ion-row>
+          <ion-row class="center">
+            <ion-col size="3"><ion-button class="boton1" style="position:relative; bottom:20px;" href="" [routerLink]="['/inscripcion']"> <ion-icon name="person-add-outline"></ion-icon>  </ion-button> <br></ion-col>
+            <ion-col size="3"><ion-button class="boton1" (click)="quienesSomos()"style="position:relative; top:35px;"> <ion-icon name="business-outline"></ion-icon></ion-button></ion-col>
+            <ion-col size="3"><ion-button class="boton1" style="position:relative; bottom:20px;" href="" [routerLink]="['/recuperar-contrasena']"> <ion-icon name="help-circle-outline"></ion-icon></ion-button></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="titulo" style="position:relative; top:30px;"><p> ¿Que es Achiga? </p></ion-col>
+          </ion-row>
+          
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="folder/Inbox"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="boton" (click)="ModoInput()" slot="end" style="margin-right: 20px; margin-top: 10px;">
+      <p>Editar</p>
+    </ion-buttons>
+    <ion-buttons *ngIf="!boton" (click)="ModoInput()" slot="end" style="margin-right: 20px; margin-top: 10px;">
+      <p>Guardar</p>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profilepic-border">
+    <ion-fab-button shape="round" class="profilebutton" (click)="btnCambiarImagen()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+    <img [src]="imagen" (click)="expandir()" class="avatar">
+  </div>
+
+  <h2 style="margin-top: 15px; margin-bottom: 10;">{{nombre}} {{apellido}}</h2>
+  <ion-row style="margin-bottom: 30px;">
+    <ion-col style="text-align:center; font-size: 15px; font-family: Verdana;">
+      {{contadorRecetas}} <br> Recetas
+    </ion-col>
+    <ion-col style="text-align:center; font-size: 15px; font-family: Verdana;">
+      {{contadorComentarios}} <br> Comentarios
+    </ion-col>
+  </ion-row>
+
+
+  <p style="font-size: 20px;"> Datos del usuario</p>
+  <ion-item lines="full" *ngIf="boton">
+    <ion-label>Nombre</ion-label>
+    <ion-label class="input" style="font-size: 18px;">{{usuario.nombre}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="!boton">
+    <ion-label>Nombre</ion-label>
+    <ion-input style="margin-left: 71px;" value="{{usuario.nombre}}" [(ngModel)]="usuario.nombre"> </ion-input>
+  </ion-item>
+  <ion-item lines="full" *ngIf="boton">
+    <ion-label>Apellido</ion-label>
+    <ion-label class="input" style="font-size: 18px;">{{usuario.apellidos}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="!boton">
+    <ion-label>Apellido</ion-label>
+    <ion-input style="margin-left: 71px;" value="{{usuario.apellidos}}" [(ngModel)]="usuario.apellidos"> </ion-input>
+  </ion-item>
+  <ion-item lines="full" *ngIf="boton">
+    <ion-label style="font-size: 18px;">Fecha de nacimiento</ion-label>
+    <ion-label class="input" style="font-size: 18px;">{{ usuario.f_nacimiento | date:"dd / MM / yyyy" }}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="!boton">
+    <ion-label style="font-size: 18px;">Fecha de nacimiento</ion-label>
+    <ion-datetime displayFormat="DD / MM / YYYY" [(ngModel)]="usuario.f_nacimiento"
+      [ngModelOptions]="{standalone: true}" value="usuario.fnacimiento"></ion-datetime>
+  </ion-item>
+  <ion-item lines="full" *ngIf="boton" style="margin-bottom: 30px;">
+    <ion-label>Email</ion-label>
+    <ion-label class="input" style="font-size: 18px;">{{usuario.email}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="!boton" style="margin-bottom: 30px;">
+    <ion-label>Email</ion-label>
+    <ion-input style="margin-left: 84px;" value="{{usuario.email}}" [(ngModel)]="usuario.email"> </ion-input>
+  </ion-item>
+
+  <div style="text-align: center;">
+    <ion-button class="pass" (click)="Alertpass()">Cambiar contraseña</ion-button>
+  </div>
+  
+</ion-content>
