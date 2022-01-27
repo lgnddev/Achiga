@@ -119,7 +119,7 @@
 
         <h4>Dificultad de la receta</h4>
 
-        <mat-radio-group [(ngModel)]="dificultad" [ngModelOptions]="{standalone: true}" >
+        <mat-radio-group [(ngModel)]="receta.id_difi" [ngModelOptions]="{standalone: true}" >
           <ion-col size="6">
             <mat-radio-button value="1" style="color: rgb(255, 255, 255);">Facil</mat-radio-button>
           </ion-col>
@@ -130,6 +130,7 @@
             <mat-radio-button value="3" style="color: rgb(255, 255, 255);">Dificil</mat-radio-button>
           </ion-col>
         </mat-radio-group>
+
       </center>
 
       <ion-item style="padding-top: 30px;">

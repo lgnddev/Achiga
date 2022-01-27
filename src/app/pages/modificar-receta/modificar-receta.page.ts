@@ -43,7 +43,6 @@ export class ModificarRecetaPage implements OnInit {
   recetaBD: any[] = [];
   rows: any[] = []
   rows1 = [];
-  dificultad: number;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private servicioDB: BDService, private activeroute: ActivatedRoute, public AlertController: AlertController) {
     this.activeroute.queryParams.subscribe(params => {
@@ -79,7 +78,7 @@ export class ModificarRecetaPage implements OnInit {
       this.receta.ingredientes = receta.ingredientes,
       this.receta.preparacion = receta.preparacion,
       this.receta.descripcion = receta.descripcion,
-      this.receta.id_difi = receta.id_difi,
+      this.receta.id_difi = receta.id_difi.toString(),
       this.receta.id_tipo = receta.id_tipo,
       this.receta.id_usu = receta.id_usu
     this.rows = this.receta.ingredientes.split(";").map(function (x) { return x.split(":") })
@@ -168,12 +167,8 @@ export class ModificarRecetaPage implements OnInit {
 
   guardar() {
     this.convertir();
-    this.receta.id_difi = this.dificultad;
     this.servicioDB.updateReceta(this.receta.nom_receta, this.receta.tiempo, this.receta.ingredientes, this.receta.preparacion, this.receta.descripcion, this.receta.id_difi, this.receta.id_tipo, this.receta.id_receta, this.receta.id_usu);
     this.router.navigate(['/tus-recetas']);
   }
-
-  
-
 
 }
